@@ -26,7 +26,7 @@ public class TokenBucket {
         }
     }
 
-    public boolean allowRequest(){
+    public synchronized boolean allowRequest(){
         refill();
 
         if(tokens>0){
