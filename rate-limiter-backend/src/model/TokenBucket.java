@@ -1,3 +1,4 @@
+package model;
 
 public class TokenBucket {
 
@@ -17,7 +18,6 @@ public class TokenBucket {
         long currentTime = System.currentTimeMillis();
 
         long elapsedTime = (currentTime - lastRefillTime)/1000;
-        System.out.println("Elapsed time: "+ elapsedTime+", CurrentTime: "+currentTime+", LastRefillTime: "+lastRefillTime);
 
         if(elapsedTime > 0){
             int tokensToAdd = (int) (elapsedTime * refillRate);
@@ -37,5 +37,8 @@ public class TokenBucket {
         }
     }
 
+    public synchronized int getRemainingTokens() {
+        return tokens;
+    }
 
 }
