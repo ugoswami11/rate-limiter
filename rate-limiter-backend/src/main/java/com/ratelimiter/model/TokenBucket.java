@@ -1,4 +1,4 @@
-package model;
+package com.ratelimiter.model;
 
 public class TokenBucket {
 

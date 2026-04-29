@@ -1,7 +1,9 @@
-package service;
+package com.ratelimiter.service;
 
-import strategy.RateLimiterStrategy;
+import com.ratelimiter.strategy.RateLimiterStrategy;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RateLimiterService {
 
     private final RateLimiterStrategy strategy;
