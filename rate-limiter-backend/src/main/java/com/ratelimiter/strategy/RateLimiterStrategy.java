@@ -1,4 +1,4 @@
-package strategy;
+package com.ratelimiter.strategy;
 
 public interface RateLimiterStrategy {
 

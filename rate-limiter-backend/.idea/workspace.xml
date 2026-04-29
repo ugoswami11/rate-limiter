@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0020deed-800a-4b58-bfdd-39341fa8af14" name="Changes" comment="" />
+    <list default="true" id="0020deed-800a-4b58-bfdd-39341fa8af14" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rate-limiter-backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rate-limiter-backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TokenBucket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/model/TokenBucket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/RateLimiterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/service/RateLimiterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strategy/RateLimiterStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/RateLimiterStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strategy/TokenBucketStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/TokenBucketStrategy.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,12 +36,22 @@
     &quot;assignee&quot;: &quot;ugoswami11&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ugoswami11/rate-limiter.git",
-    "accountId": "6cfc555d-d6aa-4379-a7ed-0dbac9a7910a"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ugoswami11/rate-limiter.git&quot;,
+    &quot;accountId&quot;: &quot;6cfc555d-d6aa-4379-a7ed-0dbac9a7910a&quot;
   }
-}]]></component>
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_HOME" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -43,25 +63,19 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Application.RateLimiterBackendApplication.executor": "Run",
+    "Maven.rate-limiter-backend [clean].executor": "Run",
+    "Maven.rate-limiter-backend [compile].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "spring-boot-integration-v3.0",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ugosw/UtkarshGoswami/Programming/Java projects by chatgpt for resume/Rate-Limiter/rate-limiter/rate-limiter-backend"
+    "last_opened_file_path": "C:/Users/ugosw/UtkarshGoswami/Programming/Java projects by chatgpt for resume/Rate-Limiter/rate-limiter/rate-limiter-backend",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,5 +86,16 @@
       <updated>1776958710883</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/ratelimiter/service/RateLimiterService.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
