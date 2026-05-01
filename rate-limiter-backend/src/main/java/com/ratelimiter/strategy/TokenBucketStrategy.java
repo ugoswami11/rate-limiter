@@ -16,12 +16,13 @@ public class TokenBucketStrategy implements RateLimiterStrategy {
 
     @Override
     public boolean allowRequest(String userId) {
+        return getBucket(userId).allowRequest();
+    }
 
-        TokenBucket bucket = buckets.computeIfAbsent(
+    public TokenBucket getBucket(String userId) {
+        return buckets.computeIfAbsent(
                 userId,
                 k -> new TokenBucket(capacity, refillRate)
         );
-
-        return bucket.allowRequest();
     }
 }
