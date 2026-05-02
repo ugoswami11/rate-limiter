@@ -1,6 +1,7 @@
 package com.ratelimiter.service;
 
 import com.ratelimiter.dto.RateLimiterResponse;
+import com.ratelimiter.model.RateLimitResult;
 import com.ratelimiter.strategy.RedisRateLimiterStrategy;
 import org.springframework.stereotype.Service;
 
@@ -17,21 +18,20 @@ public class RateLimiterService {
 
     public RateLimiterResponse checkRateLimit(String userId) {
 
-        boolean allowed =
+        RateLimitResult result =
                 strategy.allowRequest(userId);
 
         String message;
-        int remainingTokens = -1; // optional improvement later
 
-        if (allowed) {
+        if (result.isAllowed()) {
             message = "Request allowed";
         } else {
             message = "Rate limit exceeded";
         }
 
         return new RateLimiterResponse(
-                allowed,
-                remainingTokens,
+                result.isAllowed(),
+                result.getRemainingTokens(),
                 message
         );
     }

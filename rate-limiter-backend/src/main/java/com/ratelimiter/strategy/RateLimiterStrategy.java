@@ -1,7 +1,9 @@
 package com.ratelimiter.strategy;
 
+import com.ratelimiter.model.RateLimitResult;
+
 public interface RateLimiterStrategy {
 
-    boolean allowRequest(String userId);
+    RateLimitResult allowRequest(String userId);
 
 }

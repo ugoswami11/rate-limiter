@@ -1,5 +1,6 @@
 package com.ratelimiter.strategy;
 
+import com.ratelimiter.model.RateLimitResult;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -18,12 +19,12 @@ public class RedisRateLimiterStrategy implements RateLimiterStrategy {
     }
 
     @Override
-    public boolean allowRequest(String userId) {
+    public RateLimitResult allowRequest(String userId) {
 
         String tokenKey = "rate_limit:" + userId + ":tokens";
         String lastRefillKey = "rate_limit:" + userId + ":last_refill";
 
-        Long currentTime = System.currentTimeMillis();
+        long currentTime = System.currentTimeMillis();
 
         Object tokenObj =
                 redisTemplate.opsForValue().get(tokenKey);
@@ -64,23 +65,18 @@ public class RedisRateLimiterStrategy implements RateLimiterStrategy {
             lastRefillTime = currentTime;
         }
 
+        boolean allowed = false;
+
         /*
-         * Allow or block request
+         * Allow request if tokens available
          */
         if (tokens > 0) {
             tokens--;
-
-            redisTemplate.opsForValue()
-                    .set(tokenKey, tokens);
-
-            redisTemplate.opsForValue()
-                    .set(lastRefillKey, lastRefillTime);
-
-            return true;
+            allowed = true;
         }
 
         /*
-         * Save current state even if blocked
+         * Save updated values back to Redis
          */
         redisTemplate.opsForValue()
                 .set(tokenKey, tokens);
@@ -88,6 +84,9 @@ public class RedisRateLimiterStrategy implements RateLimiterStrategy {
         redisTemplate.opsForValue()
                 .set(lastRefillKey, lastRefillTime);
 
-        return false;
+        return new RateLimitResult(
+                allowed,
+                tokens
+        );
     }
 }
