@@ -1,22 +1,16 @@
-package com.ratelimiter.dto;
+package com.ratelimiter.model;
 
-public class RateLimiterResponse {
+public class RateLimitResult {
 
     private boolean allowed;
     private int remainingTokens;
-    private String message;
 
-    public RateLimiterResponse() {
+    public RateLimitResult() {
     }
 
-    public RateLimiterResponse(
-            boolean allowed,
-            int remainingTokens,
-            String message
-    ) {
+    public RateLimitResult(boolean allowed, int remainingTokens) {
         this.allowed = allowed;
         this.remainingTokens = remainingTokens;
-        this.message = message;
     }
 
     public boolean isAllowed() {
@@ -33,13 +27,5 @@ public class RateLimiterResponse {
 
     public void setRemainingTokens(int remainingTokens) {
         this.remainingTokens = remainingTokens;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }
