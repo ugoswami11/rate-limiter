@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0020deed-800a-4b58-bfdd-39341fa8af14" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/config/RedisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/RedisRateLimiterStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/RedisRateLimiterStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/dto/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/dto/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/exception/GlobalExceptionHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +59,10 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Application.RateLimiterBackendApplication.executor": "Run",
+    "JUnit.RateLimiterControllerTest.executor": "Run",
     "Maven.rate-limiter-backend [clean].executor": "Run",
     "Maven.rate-limiter-backend [compile].executor": "Run",
+    "Maven.rate-limiter-backend [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "redis-integration-v4.0",
     "kotlin-language-version-configured": "true",
