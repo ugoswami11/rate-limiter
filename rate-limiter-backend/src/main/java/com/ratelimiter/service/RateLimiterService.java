@@ -1,27 +1,27 @@
 package com.ratelimiter.service;
 
 import com.ratelimiter.dto.RateLimiterResponse;
-import com.ratelimiter.model.TokenBucket;
-import com.ratelimiter.strategy.RateLimiterStrategy;
-import com.ratelimiter.strategy.TokenBucketStrategy;
+import com.ratelimiter.strategy.RedisRateLimiterStrategy;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RateLimiterService {
 
-    private final TokenBucketStrategy strategy;
+    private final RedisRateLimiterStrategy strategy;
 
-    public RateLimiterService(TokenBucketStrategy strategy) {
+    public RateLimiterService(
+            RedisRateLimiterStrategy strategy
+    ) {
         this.strategy = strategy;
     }
 
-    public RateLimiterResponse checkRateLimit(String userId){
-        TokenBucket bucket = strategy.getBucket(userId);
+    public RateLimiterResponse checkRateLimit(String userId) {
 
-        boolean allowed = bucket.allowRequest();
-        int remainingTokens = bucket.getRemainingTokens();
+        boolean allowed =
+                strategy.allowRequest(userId);
 
         String message;
+        int remainingTokens = -1; // optional improvement later
 
         if (allowed) {
             message = "Request allowed";

@@ -7,11 +7,8 @@
     <list default="true" id="0020deed-800a-4b58-bfdd-39341fa8af14" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/controller/RateLimiterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/controller/RateLimiterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/dto/RateLimiterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/dto/RateLimiterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/dto/RateLimiterResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/dto/RateLimiterResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/service/RateLimiterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/service/RateLimiterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/TokenBucketStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/TokenBucketStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
