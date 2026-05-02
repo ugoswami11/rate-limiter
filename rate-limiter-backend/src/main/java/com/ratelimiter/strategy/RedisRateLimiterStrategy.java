@@ -1,8 +1,14 @@
 package com.ratelimiter.strategy;
 
 import com.ratelimiter.model.RateLimitResult;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
+import org.springframework.scripting.support.ResourceScriptSource;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class RedisRateLimiterStrategy implements RateLimiterStrategy {
@@ -10,83 +16,90 @@ public class RedisRateLimiterStrategy implements RateLimiterStrategy {
     private final RedisTemplate<String, Object> redisTemplate;
 
     private final int capacity = 5;
-    private final int refillRate = 1; // tokens per second
+    private final int refillRate = 1;
+
+    private final DefaultRedisScript<List> rateLimiterScript;
 
     public RedisRateLimiterStrategy(
             RedisTemplate<String, Object> redisTemplate
     ) {
         this.redisTemplate = redisTemplate;
+
+        /*
+         * Load Lua script from resources/scripts/rate_limiter.lua
+         */
+        this.rateLimiterScript = new DefaultRedisScript<>();
+        this.rateLimiterScript.setScriptSource(
+                new ResourceScriptSource(
+                        new ClassPathResource(
+                                "scripts/rate_limiter.lua"
+                        )
+                )
+        );
+
+        this.rateLimiterScript.setResultType(List.class);
     }
 
     @Override
     public RateLimitResult allowRequest(String userId) {
 
-        String tokenKey = "rate_limit:" + userId + ":tokens";
-        String lastRefillKey = "rate_limit:" + userId + ":last_refill";
+        String tokenKey =
+                "rate_limit:" + userId + ":tokens";
 
-        long currentTime = System.currentTimeMillis();
+        String lastRefillKey =
+                "rate_limit:" + userId + ":last_refill";
 
-        Object tokenObj =
-                redisTemplate.opsForValue().get(tokenKey);
-
-        Object lastRefillObj =
-                redisTemplate.opsForValue().get(lastRefillKey);
-
-        int tokens;
-        long lastRefillTime;
+        long currentTime =
+                System.currentTimeMillis();
 
         /*
-         * First request for this user
+         * KEYS passed to Lua script
          */
-        if (tokenObj == null || lastRefillObj == null) {
-            tokens = capacity;
-            lastRefillTime = currentTime;
-        } else {
-            tokens = Integer.parseInt(tokenObj.toString());
-            lastRefillTime =
-                    Long.parseLong(lastRefillObj.toString());
-        }
+        List<String> keys = Arrays.asList(
+                tokenKey,
+                lastRefillKey
+        );
 
         /*
-         * Refill logic
+         * ARGV passed to Lua script
+         *
+         * ARGV[1] = capacity
+         * ARGV[2] = refillRate
+         * ARGV[3] = currentTime
          */
-        long elapsedTime =
-                (currentTime - lastRefillTime) / 1000;
+        List result = redisTemplate.execute(
+                rateLimiterScript,
+                keys,
+                String.valueOf(capacity),
+                String.valueOf(refillRate),
+                String.valueOf(currentTime)
+        );
 
-        if (elapsedTime > 0) {
-            int tokensToAdd =
-                    (int) (elapsedTime * refillRate);
-
-            tokens = Math.min(
-                    capacity,
-                    tokens + tokensToAdd
+        /*
+         * Lua returns:
+         * [allowed, remainingTokens]
+         *
+         * Example:
+         * [1, 4]
+         */
+        if (result == null || result.size() < 2) {
+            throw new RuntimeException(
+                    "Invalid Redis Lua script response"
             );
-
-            lastRefillTime = currentTime;
         }
 
-        boolean allowed = false;
+        int allowedValue =
+                Integer.parseInt(result.get(0).toString());
 
-        /*
-         * Allow request if tokens available
-         */
-        if (tokens > 0) {
-            tokens--;
-            allowed = true;
-        }
+        int remainingTokens =
+                Integer.parseInt(result.get(1).toString());
 
-        /*
-         * Save updated values back to Redis
-         */
-        redisTemplate.opsForValue()
-                .set(tokenKey, tokens);
-
-        redisTemplate.opsForValue()
-                .set(lastRefillKey, lastRefillTime);
+        boolean allowed =
+                allowedValue == 1;
 
         return new RateLimitResult(
                 allowed,
-                tokens
+                remainingTokens
         );
     }
 }

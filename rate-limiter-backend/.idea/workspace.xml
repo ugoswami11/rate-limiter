@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0020deed-800a-4b58-bfdd-39341fa8af14" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/dto/RateLimiterResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/dto/RateLimiterResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/service/RateLimiterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/service/RateLimiterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/RateLimiterStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/RateLimiterStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/config/RedisConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/RedisRateLimiterStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/RedisRateLimiterStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/TokenBucketStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ratelimiter/strategy/TokenBucketStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,5 +80,16 @@
       <updated>1776958710883</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
