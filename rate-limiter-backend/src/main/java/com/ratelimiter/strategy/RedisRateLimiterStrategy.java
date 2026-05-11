@@ -32,7 +32,7 @@ public class RedisRateLimiterStrategy implements RateLimiterStrategy {
         this.rateLimiterScript.setScriptSource(
                 new ResourceScriptSource(
                         new ClassPathResource(
-                                "scripts/rate_limiter.lua"
+                                "scripts/rate-limiter.lua"
                         )
                 )
         );
